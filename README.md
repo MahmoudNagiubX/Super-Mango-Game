@@ -1,20 +1,24 @@
 <div align="center">
 
-<img src="./Super%20Mango%20Game%20Main/resources/logo.png" alt="Super Mango logo" width="220" />
+<img src="./docs/assets/super-mango-logo.svg" alt="Super Mango pixel-art logo" width="360" />
 
-# 🥭 Super Mango
+# Super Mango
 
-### A handcrafted 2D platformer built with C++ and raylib
+### A retro 2D platformer built with C++ and raylib
 
 [![C++](https://img.shields.io/badge/C%2B%2B-14-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
-[![raylib](https://img.shields.io/badge/raylib-4.5-000000?logoColor=white)](https://www.raylib.com/)
-[![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)](#download-and-play)
-[![Release](https://img.shields.io/github/v/release/MahmoudNagiubX/Super-Mango-Game?include_prereleases&label=release)](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/latest)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](./Super%20Mango%20Game%20Main/LICENSE.txt)
+[![raylib](https://img.shields.io/badge/raylib-4.5-000000)](https://www.raylib.com/)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](#download-and-play)
+[![Release](https://img.shields.io/badge/release-v1.0.0-2ea44f)](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/tag/v1.0.0)
+[![Status](https://img.shields.io/badge/status-playable%20demo-orange)](#project-status)
 
-**Explore two pixel-art environments, collect coins, avoid enemies and traps, and reach the star at the end of each level.**
+**Run, jump, collect coins, survive moving hazards, and reach the goal across two pixel-art levels.**
 
-[Download the Windows demo](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/latest) · [Explore the code](./Super%20Mango%20Game%20Main) · [Report an issue](https://github.com/MahmoudNagiubX/Super-Mango-Game/issues)
+[Download v1.0.0](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/download/v1.0.0/Super-Mango-Windows-v1.0.0.zip)
+·
+[View release notes](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/tag/v1.0.0)
+·
+[Browse the source](./Super%20Mango%20Game%20Main)
 
 </div>
 
@@ -22,23 +26,20 @@
 
 ## Overview
 
-**Super Mango** is a retro-inspired 2D platform game developed in **C++14** using **raylib**. The project was built to explore the systems behind a platformer rather than relying on a full game engine.
+**Super Mango** is a side-scrolling platform game implemented in **C++14** with **raylib**. Instead of relying on a full game engine, the project implements its own gameplay loop, player movement, gravity, collision handling, camera tracking, tile rendering, enemy motion, scoring, audio, menus, and level progression.
 
-The implementation covers the complete gameplay loop: menu navigation, player movement, animation, camera tracking, tile-based levels, collision handling, enemy behavior, hazards, scoring, audio, pausing, game-over recovery, and an ending sequence.
+The repository is presented as a complete small software product: source code, playable Windows release, screenshots, build instructions, architecture notes, and an engineering roadmap.
 
-### Why this project matters
+## Project Status
 
-This repository demonstrates practical experience with:
-
-- Object-oriented C++ design across focused gameplay modules
-- Real-time game-loop and state-management logic
-- Custom player physics and collision handling
-- Sprite-sheet animation and frame-based timing
-- Tile-map rendering for large, side-scrolling levels
-- Camera, HUD, audio, and input integration with raylib
-- Packaging a playable Windows build through GitHub Releases
-
----
+| Item | Current state |
+|---|---|
+| **Release** | `v1.0.0` playable Windows demo |
+| **Levels** | 2 complete side-scrolling levels |
+| **Platform** | Windows |
+| **Language** | C++14 |
+| **Graphics library** | raylib 4.5 |
+| **Distribution** | GitHub Releases |
 
 ## Screenshots
 
@@ -60,22 +61,26 @@ This repository demonstrates practical experience with:
   <img src="./Super%20Mango%20Game%20Main/resources/graphics/backgrounds/Image%20(3).png" alt="Super Mango castle gameplay level" width="900" />
 </p>
 
----
+## Engineering Highlights
+
+- **Real-time application loop:** coordinates scenes, gameplay updates, rendering, audio, pausing, game-over handling, and the ending flow.
+- **Custom player controller:** horizontal movement, sprint acceleration, jumping, gravity, boundaries, camera tracking, health, lives, and temporary damage immunity.
+- **Tile-based levels:** each level is stored as a `17 × 130` character grid and rendered into 64-pixel terrain, platforms, hazards, and collectibles.
+- **Collision system:** handles platforms, coins, spikes, moving saws, enemies, falls, level goals, and respawn behavior.
+- **Sprite animation:** frame-based sprite-sheet animation with mirrored source rectangles for left/right movement.
+- **Release delivery:** packages the executable, resources, runtime DLLs, license notice, and play instructions into a downloadable Windows ZIP.
 
 ## Gameplay
 
-The player must travel through two handcrafted levels while managing health and lives, collecting coins, and avoiding environmental and moving hazards.
-
-| System | Implementation |
+| System | Behavior |
 |---|---|
-| **Movement** | Left/right movement, sprinting, jumping, gravity, and boundary checks |
-| **Health** | Three-hit health system with temporary damage immunity |
-| **Lives** | Respawn flow and game-over sequence when all lives are lost |
-| **Scoring** | Coins award points; score milestones grant an extra life |
-| **Enemies** | Birds, spiders, and animated flame hazards with level-specific movement |
-| **Hazards** | Spikes, moving saws, falls, and enemy collisions |
-| **Progression** | Reach the star to complete a level and unlock the next scene |
-| **Audio** | Menu, level, ending music, and gameplay sound effects |
+| **Movement** | Move left/right, sprint, jump, and traverse a scrolling level |
+| **Health and lives** | Three-hit health system, respawning, and a game-over sequence |
+| **Scoring** | Coins increase the score; score milestones grant an extra life |
+| **Enemies** | Birds, spiders, and animated flame hazards |
+| **Environment** | Platforms, bridges, spikes, falls, and moving saws |
+| **Progression** | Reach the star to complete the current level |
+| **Audio** | Separate menu, level, and ending music with gameplay sound effects |
 
 ### Controls
 
@@ -88,56 +93,23 @@ The player must travel through two handcrafted levels while managing health and 
 | `Esc` | Pause or resume |
 | `Q` | Return to the main menu while paused |
 
----
-
-## Download and Play
-
-### Recommended: Windows release
-
-1. Open the [latest GitHub Release](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/latest).
-2. Download `Super-Mango-Windows-v1.0.0.zip`.
-3. Extract the entire ZIP file.
-4. Run `SuperMango.exe` from the extracted folder.
-
-> [!IMPORTANT]
-> Keep the `resources` directory and the included DLL files beside the executable. The game loads textures, audio, and fonts using relative paths.
-
-The release is a **playable Windows demo** containing both levels and the current complete gameplay flow.
-
----
-
 ## Architecture
 
-The codebase separates gameplay responsibilities into six primary modules:
-
-```mermaid
-flowchart LR
-    Main[main.cpp<br/>Application loop] --> Menu[Menu<br/>Scenes and navigation]
-    Main --> Levels[Levels<br/>Maps and collisions]
-    Main --> Player[Player<br/>Input and physics]
-    Main --> Enemies[Enemies<br/>Hazard movement]
-    Player --> Animations[Animations<br/>Sprite rendering]
-    Enemies --> Animations
-    Levels --> Player
-    Levels --> Enemies
-```
+The codebase separates the main gameplay responsibilities into focused modules:
 
 | Module | Responsibility |
 |---|---|
-| `main.cpp` | Initializes raylib and coordinates the complete application/game loop |
-| `Menu` | Splash animation, main menu, controls screen, pause UI, and ending screen |
-| `Player` | Input, movement, sprinting, jumping, gravity, camera, health, lives, and HUD |
-| `Levels` | Tile maps, rendering, coins, collision resolution, hazards, progression, and death flow |
-| `Enemies` | Bird, spider, and flame movement behavior plus enemy resets |
-| `Animations` | Sprite-sheet source rectangles, animation timers, and entity rendering |
-
-### Project structure
+| `main.cpp` | Application setup and top-level game loop |
+| `Menu` | Splash animation, main menu, controls, pause UI, and ending screen |
+| `Player` | Input, movement, physics, camera, health, lives, score, and HUD |
+| `Levels` | Tile maps, drawing, collisions, coins, hazards, progression, and death flow |
+| `Enemies` | Bird, spider, and flame movement plus reset behavior |
+| `Animations` | Texture loading, sprite frames, animation timers, and entity rendering |
 
 ```text
 Super-Mango-Game/
-├── .github/
-│   └── workflows/
-│       └── release.yml
+├── .github/workflows/release.yml
+├── docs/assets/super-mango-logo.svg
 ├── Super Mango Game Main/
 │   ├── Animations.cpp / Animations.h
 │   ├── Enemies.cpp / Enemies.h
@@ -149,32 +121,18 @@ Super-Mango-Game/
 │   ├── Super Mango.vcxproj
 │   ├── main.exe
 │   └── resources/
-│       ├── audio/
-│       └── graphics/
 └── README.md
 ```
 
----
+## Download and Play
 
-## Technical Details
+1. Download [`Super-Mango-Windows-v1.0.0.zip`](https://github.com/MahmoudNagiubX/Super-Mango-Game/releases/download/v1.0.0/Super-Mango-Windows-v1.0.0.zip).
+2. Extract the complete ZIP archive.
+3. Open the extracted folder.
+4. Run `SuperMango.exe`.
 
-### Tile-based level system
-
-Each level is represented as a `17 × 130` character grid. Individual characters map to terrain, platforms, bridges, spikes, coins, or empty space. The renderer converts those symbols into 64-pixel tiles, while the collision system uses the same map as its gameplay source of truth.
-
-### Player physics
-
-Movement and jumping are implemented directly in the game loop. The player uses horizontal speed, sprint acceleration, vertical jump velocity, gravity accumulation, foot collision checks, and a side-scrolling `Camera2D` target.
-
-### Collision and damage
-
-The game combines raylib rectangle collision helpers with a custom overlap check for rotated or offset hazards. Damage reduces the player's health and starts an immunity timer so a single contact does not remove all health instantly.
-
-### Animation system
-
-Characters and hazards use sprite sheets. Source rectangles advance through animation frames using dedicated timers, while negative source widths mirror sprites to face the opposite direction.
-
----
+> [!IMPORTANT]
+> Keep `SuperMango.exe`, the included DLL files, and the `resources` directory together. The game loads its textures, sounds, music, and fonts through relative paths.
 
 ## Build from Source
 
@@ -182,10 +140,10 @@ Characters and hazards use sprite sheets. Source rectangles advance through anim
 
 - Windows 10 or later
 - A C++14-compatible compiler
-- [raylib](https://www.raylib.com/) 4.5 or a compatible version
-- Visual Studio 2022 **or** the raylib Windows `w64devkit` toolchain
+- raylib 4.5 or a compatible release
+- Visual Studio 2022 or a raylib-configured MinGW/w64devkit environment
 
-### Clone the repository
+### Clone
 
 ```bash
 git clone https://github.com/MahmoudNagiubX/Super-Mango-Game.git
@@ -194,11 +152,11 @@ cd Super-Mango-Game/"Super Mango Game Main"
 
 ### Visual Studio
 
-Open `Super Mango.vcxproj`, configure your raylib include/library paths, select the desired Windows target, and build the project.
+Open `Super Mango.vcxproj`, configure the raylib include and library paths for your environment, select the required Windows target, and build.
 
-### Command-line example
+### Command line
 
-Run this from `Super Mango Game Main` in a raylib-configured MinGW environment:
+Run from `Super Mango Game Main` in a raylib-configured MinGW environment:
 
 ```bash
 g++ -std=c++14 \
@@ -207,44 +165,31 @@ g++ -std=c++14 \
   -lraylib -lopengl32 -lgdi32 -lwinmm
 ```
 
-Run the resulting executable from the same directory so it can locate `resources/`.
+Run the executable from the same directory as `resources/`.
 
----
+## Next Engineering Improvements
 
-## Engineering Roadmap
-
-The current release is a complete playable demo. Natural next improvements include:
-
-- Move level data from C++ arrays into external map files
-- Replace frame-dependent motion with delta-time-based movement
-- Introduce RAII wrappers for textures, sounds, fonts, and music
-- Add CMake for reproducible cross-platform builds
-- Add unit tests for map parsing, scoring, and collision calculations
-- Add settings for resolution, audio volume, and key remapping
-- Expand the game with additional levels and enemy behaviors
-
----
+- Replace frame-dependent movement with delta-time-based updates.
+- Move level layouts from large C++ arrays into external map files.
+- Add CMake and automated build validation for reproducible builds.
+- Introduce RAII-based resource ownership and targeted tests for deterministic gameplay logic.
 
 ## Developer
 
 ### Mahmoud Nagiub
 
-Software Engineering student building practical projects across **software engineering, AI systems, and systems-level development**. Super Mango represents my work with C++, real-time application architecture, interactive graphics, and complete product delivery from source code to a downloadable release.
+I am a Software Engineering student building practical projects across software engineering, AI systems, and systems-level development. This project highlights my foundation in **C++**, real-time application flow, interactive graphics, modular design, debugging, and packaging software for other people to run.
 
 - GitHub: [@MahmoudNagiubX](https://github.com/MahmoudNagiubX)
 
----
+## License and Asset Notes
 
-## License and Credits
-
-This repository includes an [MIT License](./Super%20Mango%20Game%20Main/LICENSE.txt). raylib and all third-party visual or audio assets remain subject to their respective original licenses and attribution requirements.
+The repository includes a license notice in [`Super Mango Game Main/LICENSE.txt`](./Super%20Mango%20Game%20Main/LICENSE.txt). raylib and any third-party visual, audio, font, or runtime assets remain subject to their respective licenses and attribution requirements.
 
 ---
 
 <div align="center">
 
-Built with C++ and raylib — from game loop to playable release. 🥭
-
-If the project helped or interested you, consider giving the repository a star.
+Built with C++ and raylib. 🥭
 
 </div>
