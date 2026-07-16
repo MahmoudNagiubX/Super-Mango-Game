@@ -30,17 +30,6 @@
 
 The repository is presented as a complete small software product: source code, playable Windows release, screenshots, build instructions, architecture notes, and an engineering roadmap.
 
-## Project Status
-
-| Item | Current state |
-|---|---|
-| **Release** | `v1.0.0` playable Windows demo |
-| **Levels** | 2 complete side-scrolling levels |
-| **Platform** | Windows |
-| **Language** | C++14 |
-| **Graphics library** | raylib 4.5 |
-| **Distribution** | GitHub Releases |
-
 ## Screenshots
 
 ### Main Menu
